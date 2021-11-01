@@ -1,5 +1,6 @@
 package com.nprmanbrandons11.navegacinjetpack
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,7 +25,8 @@ class SecondFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    var argumento:String? = null
+    var argumentoscore:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,23 +40,42 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        argumento= arguments?.getString("user")
 
         return inflater.inflate(R.layout.fragment_second, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        argumentoscore = arguments?.getString("score")
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val argumento= arguments?.getString("user")
+
+        val tvscore:TextView = view.findViewById(R.id.scoretv)
+        if(argumentoscore != null){
+
+        tvscore.text = argumentoscore}
+        else{
+            tvscore.text = "0"
+        }
+
+
         val tv:TextView = view.findViewById(R.id.usuario_nombre)
         tv.text = argumento
         var botoncerrar: Button = view.findViewById(R.id.boton_cerrarsesion)
         var botoncambiar: Button = view.findViewById(R.id.boton_cambiar)
+        var botonjugar: Button = view.findViewById(R.id.boton_irbolado)
         botoncerrar.setOnClickListener{
             findNavController().navigate(R.id.action_secondFragment_to_fragmentMain)
 
         }
         botoncambiar.setOnClickListener{
             findNavController().navigate(R.id.action_secondFragment_to_loginFragment)
+
+        }
+        botonjugar.setOnClickListener{
+            findNavController().navigate(R.id.action_secondFragment_to_bolado)
 
         }
     }

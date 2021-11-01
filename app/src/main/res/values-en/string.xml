@@ -10,5 +10,9 @@
     <string name="wellcome">Wellcome</string>
     <string name="start">Start</string>
     <string name="switchuser">Switch User</string>
-
+    <string name="throw_coin"> Throw Coin</string>
+    <string name="youwin">You Win</string>
+    <string name="youlose">You Lose</string>
+    <string name="score">Score</string>
+    <string name="resing">Resign</string>
 </resources>

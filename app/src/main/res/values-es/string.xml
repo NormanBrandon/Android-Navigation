@@ -10,5 +10,9 @@
     <string name="wellcome">Bienvenido</string>
     <string name="start">Iniciar</string>
     <string name="switchuser">Cambiar usuario</string>
-
+    <string name="throw_coin"> Lanzar moneda</string>
+    <string name="youwin">Ganaste</string>
+    <string name="youlose">Perdiste</string>
+    <string name="score">Puntuación</string>
+    <string name="resing">Resignarse</string>
 </resources>

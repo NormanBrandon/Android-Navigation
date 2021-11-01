@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_secondFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_secondFragment_to_bolado"
+            app:destination="@id/bolado" />
 
     </fragment>
     <fragment
@@ -39,6 +42,15 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bolado"
+        android:name="com.nprmanbrandons11.navegacinjetpack.Bolado"
+        android:label="fragment_bolado"
+        tools:layout="@layout/fragment_bolado" >
+        <action
+            android:id="@+id/action_bolado_to_secondFragment"
             app:destination="@id/secondFragment" />
     </fragment>
 </navigation>
