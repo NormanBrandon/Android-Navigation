@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.nprmanbrandons11.navegacinjetpack.databinding.FragmentSecondBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +28,9 @@ class SecondFragment : Fragment() {
     private var param2: String? = null
     var argumento:String? = null
     var argumentoscore:String? = null
+    private var _binding : FragmentSecondBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,8 +45,8 @@ class SecondFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         argumento= arguments?.getString("user")
-
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        _binding = FragmentSecondBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
@@ -52,29 +56,23 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val tvscore:TextView = view.findViewById(R.id.scoretv)
         if(argumentoscore != null){
 
-        tvscore.text = argumentoscore}
+        binding.scoretv.text = argumentoscore}
         else{
-            tvscore.text = "0"
+            binding.scoretv.text = "0"
         }
 
-
-        val tv:TextView = view.findViewById(R.id.usuario_nombre)
-        tv.text = argumento
-        var botoncerrar: Button = view.findViewById(R.id.boton_cerrarsesion)
-        var botoncambiar: Button = view.findViewById(R.id.boton_cambiar)
-        var botonjugar: Button = view.findViewById(R.id.boton_irbolado)
-        botoncerrar.setOnClickListener{
+        binding.usuarioNombre.text = argumento
+        binding.botonCerrarsesion.setOnClickListener{
             findNavController().navigate(R.id.action_secondFragment_to_fragmentMain)
 
         }
-        botoncambiar.setOnClickListener{
+        binding.botonCambiar.setOnClickListener{
             findNavController().navigate(R.id.action_secondFragment_to_loginFragment)
 
         }
-        botonjugar.setOnClickListener{
+        binding.botonIrbolado.setOnClickListener{
             findNavController().navigate(R.id.action_secondFragment_to_bolado)
 
         }

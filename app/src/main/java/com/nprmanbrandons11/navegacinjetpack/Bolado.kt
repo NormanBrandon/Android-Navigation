@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.nprmanbrandons11.navegacinjetpack.databinding.FragmentBoladoBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +28,9 @@ class Bolado : Fragment() {
     var count : Int = 0
     var wins : Int = 0
     lateinit var scoreMax: String
+    var _binding:FragmentBoladoBinding? = null
+    val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -40,35 +44,33 @@ class Bolado : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_bolado, container, false)
+        _binding = FragmentBoladoBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var botonresignarse: Button = view.findViewById(R.id.boton_resig)
-        botonresignarse.setOnClickListener{
+
+        binding.botonResig.setOnClickListener{
             var bundle = bundleOf("score" to scoreMax)
             findNavController().navigate(R.id.action_bolado_to_secondFragment,bundle)
         }
-        var botonlanzar: Button = view.findViewById(R.id.boton_lanzar)
-        botonlanzar.setOnClickListener{
+        binding.botonLanzar.setOnClickListener{
         val prob = 0 .. 1
         val resultado = prob.random()
-        var resul : TextView = view.findViewById(R.id.cara_sol)
-        if (resultado.toInt() == 1){
+       if (resultado.toInt() == 1){
             wins++
             count ++
-            resul.text = getString(R.string.youwin)
+            binding.caraSol.text = getString(R.string.youwin)
 
         }
         else{
             count ++
-            resul.text = getString(R.string.youlose)
+           binding.caraSol.text = getString(R.string.youlose)
 
         }
-            var score : TextView = view.findViewById(R.id.score)
-            score.text = "$wins" + "/" +"$count"
+
+            binding.score.text = "$wins" + "/" +"$count"
             scoreMax = "$wins" + "/" +"$count"
 
         }

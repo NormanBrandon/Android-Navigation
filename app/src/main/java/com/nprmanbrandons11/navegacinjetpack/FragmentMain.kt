@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.nprmanbrandons11.navegacinjetpack.databinding.FragmentMainBinding
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,7 +26,11 @@ class FragmentMain : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var mcontext : Context
+    //Declaración del binding
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -39,17 +44,17 @@ class FragmentMain : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mcontext = inflater.context
-        return inflater.inflate(R.layout.fragment_main, container, false)
+
+        _binding = FragmentMainBinding.inflate(inflater, container,false)
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button: Button = view.findViewById(R.id.boton_start)
-        button.setOnClickListener {
-        //Toast.makeText(mcontext,"Hola",Toast.LENGTH_LONG).show()
+
+        binding.botonStart.setOnClickListener {
         findNavController().navigate(R.id.action_fragmentMain_to_loginFragment)
         }
 

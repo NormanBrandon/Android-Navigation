@@ -10,6 +10,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.nprmanbrandons11.navegacinjetpack.databinding.FragmentLoginBinding
+import com.nprmanbrandons11.navegacinjetpack.databinding.FragmentMainBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +27,8 @@ class LoginFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -39,13 +42,13 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var botoncerrar: Button = view.findViewById(R.id.boton_login)
-        botoncerrar.setOnClickListener{
+        binding.botonLogin.setOnClickListener{
             var psswd :EditText = view.findViewById(R.id.edit_passwd)
             var user :EditText = view.findViewById(R.id.edit_user)
 
@@ -58,8 +61,7 @@ class LoginFragment : Fragment() {
             }
             else{
                 Toast.makeText(view.context,"Contraseña o Usuario Incorrectos",Toast.LENGTH_LONG).show()
-                //Toast.makeText(view.context,psswd.text.toString(),Toast.LENGTH_LONG).show()
-                //Toast.makeText(view.context,user.text.toString(),Toast.LENGTH_LONG).show()
+
             }
 
 
