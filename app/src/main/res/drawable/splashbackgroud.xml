@@ -4,7 +4,8 @@
 <item android:drawable="@color/white">
 
 </item>
-    <item android:height="200dp"
+    <item
+        android:height="200dp"
         android:width="200dp"
         android:gravity="center">
         <bitmap android:src="@drawable/shuggarlogo"></bitmap>

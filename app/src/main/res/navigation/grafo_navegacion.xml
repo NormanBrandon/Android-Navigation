@@ -21,7 +21,8 @@
         tools:layout="@layout/fragment_second" >
         <action
             android:id="@+id/action_secondFragment_to_fragmentMain"
-            app:destination="@id/fragmentMain" />
+            app:destination="@id/fragmentMain"
+            app:enterAnim="@anim/nav_default_enter_anim" />
         <argument
             android:name="user"
             app:argType="string"
